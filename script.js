@@ -607,3 +607,195 @@ function resetCartTimeout() {
 // Reset timeout on cart interaction
 cartSidebar.addEventListener('mousemove', resetCartTimeout);
 cartSidebar.addEventListener('click', resetCartTimeout);
+
+// User section functionality
+function updateUserSection() {
+    const userSection = document.getElementById('userSection');
+    if (!userSection) return;
+    
+    const savedLogin = localStorage.getItem('fadal_user') || sessionStorage.getItem('fadal_user');
+    
+    if (savedLogin) {
+        try {
+            const loginData = JSON.parse(savedLogin);
+            const loginTime = new Date(loginData.loginTime);
+            const now = new Date();
+            const hoursDiff = (now - loginTime) / (1000 * 60 * 60);
+            
+            // Check if login is still valid
+            const maxHours = loginData.remember ? 24 * 30 : 24;
+            
+            if (hoursDiff < maxHours && loginData.user) {
+                // User is logged in
+                const userName = loginData.user.name.split(' ')[0];
+                userSection.innerHTML = `
+                    <div class="user-menu">
+                        <div class="user-info" onclick="toggleUserDropdown()">
+                            <i class="fas fa-user-circle"></i>
+                            <span>${userName}</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="user-dropdown" id="userDropdown">
+                            <a href="dashboard.html">
+                                <i class="fas fa-tachometer-alt"></i>
+                                Dashboard
+                            </a>
+                            <a href="dashboard.html#profile">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                            <a href="dashboard.html#orders">
+                                <i class="fas fa-shopping-bag"></i>
+                                Dalabyadaada
+                            </a>
+                            <a href="dashboard.html#wishlist">
+                                <i class="fas fa-heart"></i>
+                                Liiska Jecelka
+                            </a>
+                            <div class="divider"></div>
+                            <a href="#" onclick="logoutUser()">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Bax
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                // Add styles for the user menu
+                if (!document.getElementById('userMenuStyles')) {
+                    const style = document.createElement('style');
+                    style.id = 'userMenuStyles';
+                    style.textContent = `
+                        .user-menu {
+                            position: relative;
+                        }
+                        
+                        .user-info {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                            background: rgba(255, 255, 255, 0.1);
+                            padding: 0.5rem 1rem;
+                            border-radius: 25px;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            color: white;
+                        }
+                        
+                        .user-info:hover {
+                            background: rgba(255, 255, 255, 0.2);
+                        }
+                        
+                        .user-info i:first-child {
+                            font-size: 1.2rem;
+                        }
+                        
+                        .user-dropdown {
+                            position: absolute;
+                            top: 100%;
+                            right: 0;
+                            background: white;
+                            border-radius: 12px;
+                            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+                            min-width: 200px;
+                            opacity: 0;
+                            visibility: hidden;
+                            transform: translateY(-10px);
+                            transition: all 0.3s ease;
+                            z-index: 1000;
+                            margin-top: 0.5rem;
+                        }
+                        
+                        .user-dropdown.show {
+                            opacity: 1;
+                            visibility: visible;
+                            transform: translateY(0);
+                        }
+                        
+                        .user-dropdown a {
+                            display: flex;
+                            align-items: center;
+                            gap: 0.5rem;
+                            padding: 0.8rem 1rem;
+                            color: #333;
+                            text-decoration: none;
+                            transition: background 0.3s ease;
+                            border-radius: 8px;
+                            margin: 0.2rem;
+                        }
+                        
+                        .user-dropdown a:hover {
+                            background: #f8f9fa;
+                            color: #667eea;
+                        }
+                        
+                        .user-dropdown .divider {
+                            height: 1px;
+                            background: #eee;
+                            margin: 0.5rem 1rem;
+                        }
+                        
+                        @media (max-width: 768px) {
+                            .user-info {
+                                padding: 0.4rem 0.8rem;
+                            }
+                            
+                            .user-info span {
+                                display: none;
+                            }
+                        }
+                    `;
+                    document.head.appendChild(style);
+                }
+                
+                return;
+            }
+        } catch (error) {
+            console.error('Error parsing login data:', error);
+        }
+    }
+    
+    // User is not logged in
+    userSection.innerHTML = `
+        <a href="login.html" class="login-link">
+            <i class="fas fa-user"></i> Soo Gal
+        </a>
+    `;
+}
+
+// Toggle user dropdown
+function toggleUserDropdown() {
+    const dropdown = document.getElementById('userDropdown');
+    if (dropdown) {
+        dropdown.classList.toggle('show');
+    }
+}
+
+// Logout user
+function logoutUser() {
+    if (confirm('Ma hubtaa inaad doonayso inaad ka baxdo?')) {
+        localStorage.removeItem('fadal_user');
+        sessionStorage.removeItem('fadal_user');
+        
+        // Show success message
+        showSuccessMessage('Waa la ka baxay! Ku soo dhawoow mar kale.');
+        
+        // Update user section
+        updateUserSection();
+    }
+}
+
+// Close user dropdown when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.user-menu')) {
+        const dropdown = document.getElementById('userDropdown');
+        if (dropdown) {
+            dropdown.classList.remove('show');
+        }
+    }
+});
+
+// Initialize user section on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updateUserSection();
+});

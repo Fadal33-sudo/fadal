@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="so" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Fadal Dukaanka Online-ka</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dashboard-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h1><i class="fas fa-store"></i> Fadal</h1>
+                    <p>Dukaanka Online-ka</p>
+                </a>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Hore</a></li>
+                    <li><a href="index.html#products">Alaabada</a></li>
+                    <li><a href="index.html#about">Naga</a></li>
+                    <li><a href="index.html#contact">Xiriir</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <div class="user-menu">
+                    <div class="user-avatar" onclick="toggleUserMenu()">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName">Ahmed</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                        <a href="#" onclick="showProfile()"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#" onclick="showSettings()"><i class="fas fa-cog"></i> Settings</a>
+                        <div class="divider"></div>
+                        <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Bax</a>
+                    </div>
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">3</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section">
+        <div class="container">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+                <div class="welcome-content">
+                    <h1>Ku soo dhawoow, <span id="userFullName">Ahmed Maxamed</span>!</h1>
+                    <p>Halkan waxaad ka maamuuli kartaa akoonkaaga iyo dalabadaada</p>
+                </div>
+                <div class="user-stats">
+                    <div class="stat">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="stat-number" id="totalOrders">12</span>
+                        <span class="stat-label">Dalabyo</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-heart"></i>
+                        <span class="stat-number" id="wishlistCount">8</span>
+                        <span class="stat-label">Jecel</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span class="stat-number" id="totalSpent">$1,245</span>
+                        <span class="stat-label">Waddarta</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Sidebar -->
+                <div class="dashboard-sidebar">
+                    <div class="sidebar-menu">
+                        <a href="#" class="menu-item active" data-section="overview">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Guud ahaan</span>
+                        </a>
+                        <a href="#" class="menu-item" data-section="orders">
+                            <i class="fas fa-shopping-bag"></i>
+                            <span>Dalabyadaada</span>
+                            <span class="badge">3</span>
+                        </a>
+                        <a href="#" class="menu-item" data-section="wishlist">
+                            <i class="fas fa-heart"></i>
+                            <span>Liiska Jecelka</span>
+                        </a>
+                        <a href="#" class="menu-item" data-section="profile">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                        <a href="#" class="menu-item" data-section="addresses">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Ciwaannada</span>
+                        </a>
+                        <a href="#" class="menu-item" data-section="payment">
+                            <i class="fas fa-credit-card"></i>
+                            <span>Bixinta</span>
+                        </a>
+                        <a href="#" class="menu-item" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="dashboard-main">
+                    <!-- Overview Section -->
+                    <div class="section-content active" id="overview">
+                        <h2>Guud ahaan</h2>
+                        
+                        <!-- Quick Actions -->
+                        <div class="quick-actions">
+                            <div class="action-card" onclick="goToSection('orders')">
+                                <i class="fas fa-shopping-bag"></i>
+                                <h3>Dalabyadaada</h3>
+                                <p>Eeg dalabyadaada ee u danbeeyay</p>
+                            </div>
+                            <div class="action-card" onclick="window.location.href='index.html#products'">
+                                <i class="fas fa-plus-circle"></i>
+                                <h3>Iibso Cusub</h3>
+                                <p>Raadi alaab cusub oo iibso</p>
+                            </div>
+                            <div class="action-card" onclick="goToSection('wishlist')">
+                                <i class="fas fa-heart"></i>
+                                <h3>Liiska Jecelka</h3>
+                                <p>Eeg alaabada aad jeceshahay</p>
+                            </div>
+                            <div class="action-card" onclick="goToSection('profile')">
+                                <i class="fas fa-user-edit"></i>
+                                <h3>Cusboonaysii Profile</h3>
+                                <p>Beddel macluumadaada</p>
+                            </div>
+                        </div>
+
+                        <!-- Recent Orders -->
+                        <div class="recent-orders">
+                            <h3>Dalabyadaada ee u danbeeyay</h3>
+                            <div class="orders-list" id="recentOrdersList">
+                                <!-- Orders will be loaded here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Section -->
+                    <div class="section-content" id="orders">
+                        <div class="section-header">
+                            <h2>Dalabyadaada</h2>
+                            <div class="filter-tabs">
+                                <button class="tab-btn active" data-status="all">Dhamaan</button>
+                                <button class="tab-btn" data-status="pending">Sugitaan</button>
+                                <button class="tab-btn" data-status="shipped">La diray</button>
+                                <button class="tab-btn" data-status="delivered">La gaadhsiiyay</button>
+                                <button class="tab-btn" data-status="cancelled">La joojiyay</button>
+                            </div>
+                        </div>
+                        <div class="orders-grid" id="ordersGrid">
+                            <!-- Orders will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Wishlist Section -->
+                    <div class="section-content" id="wishlist">
+                        <h2>Liiska Jecelka</h2>
+                        <div class="wishlist-grid" id="wishlistGrid">
+                            <!-- Wishlist items will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Profile Section -->
+                    <div class="section-content" id="profile">
+                        <h2>Profile</h2>
+                        <form class="profile-form" id="profileForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">Magaca Hore</label>
+                                    <input type="text" id="firstName" value="Ahmed">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Magaca Dambe</label>
+                                    <input type="text" id="lastName" value="Maxamed">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="profileEmail">Email</label>
+                                <input type="email" id="profileEmail" value="ahmed@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="profilePhone">Telefoon</label>
+                                <input type="tel" id="profilePhone" value="+252 61 234 5678">
+                            </div>
+                            <div class="form-group">
+                                <label for="birthDate">Taariikhda Dhalashada</label>
+                                <input type="date" id="birthDate" value="1990-01-15">
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">Jinsiga</label>
+                                <select id="gender">
+                                    <option value="male">Nin</option>
+                                    <option value="female">Naag</option>
+                                    <option value="other">Kale</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="save-btn">
+                                <i class="fas fa-save"></i> Kaydi Isbeddelka
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Addresses Section -->
+                    <div class="section-content" id="addresses">
+                        <div class="section-header">
+                            <h2>Ciwaannada</h2>
+                            <button class="add-btn" onclick="showAddAddressModal()">
+                                <i class="fas fa-plus"></i> Ku dar Ciwaaan
+                            </button>
+                        </div>
+                        <div class="addresses-grid" id="addressesGrid">
+                            <!-- Addresses will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Payment Section -->
+                    <div class="section-content" id="payment">
+                        <div class="section-header">
+                            <h2>Qaabka Bixinta</h2>
+                            <button class="add-btn" onclick="showAddPaymentModal()">
+                                <i class="fas fa-plus"></i> Ku dar Kaadhka
+                            </button>
+                        </div>
+                        <div class="payment-methods" id="paymentMethods">
+                            <!-- Payment methods will be loaded here -->
+                        </div>
+                    </div>
+
+                    <!-- Settings Section -->
+                    <div class="section-content" id="settings">
+                        <h2>Settings</h2>
+                        <div class="settings-groups">
+                            <div class="settings-group">
+                                <h3>Ogeysiisyada</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>Email Notifications</h4>
+                                        <p>Hel ogeysiisyo dalabadaada iyo offers-ka</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" checked>
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>SMS Notifications</h4>
+                                        <p>Hel wararka dhakhso ah telefoonkaaga</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3>Sirta</h3>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h4>La wadaag macluumadka</h4>
+                                        <p>Ogolow companies kale inay ku diraan ads</p>
+                                    </div>
+                                    <label class="toggle-switch">
+                                        <input type="checkbox">
+                                        <span class="slider"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="settings-group">
+                                <h3>Akoonka</h3>
+                                <button class="danger-btn" onclick="showChangePasswordModal()">
+                                    <i class="fas fa-key"></i> Beddel Fincaanka
+                                </button>
+                                <button class="danger-btn" onclick="showDeleteAccountModal()">
+                                    <i class="fas fa-trash"></i> Tirtir Akoonka
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div class="modal" id="changePasswordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Beddel Fincaanka</h3>
+                <button class="close-btn" onclick="closeModal('changePasswordModal')">&times;</button>
+            </div>
+            <form class="modal-body">
+                <div class="form-group">
+                    <label>Fincaanka Hadda</label>
+                    <input type="password" placeholder="Gali fincaankaaga hadda">
+                </div>
+                <div class="form-group">
+                    <label>Fincaanka Cusub</label>
+                    <input type="password" placeholder="Gali fincaan cusub">
+                </div>
+                <div class="form-group">
+                    <label>Xaqiiji Fincaanka</label>
+                    <input type="password" placeholder="Ku celi fincaanka">
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn-primary">Kaydi</button>
+                <button class="btn-secondary" onclick="closeModal('changePasswordModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-store"></i> Fadal</h3>
+                    <p>Dukaanka online-ka ugu wanaagsan ee Soomaaliya.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Akoonka</h4>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="#" onclick="goToSection('orders')">Dalabyadaada</a></li>
+                        <li><a href="#" onclick="goToSection('profile')">Profile</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Caawinta</h4>
+                    <ul>
+                        <li><a href="index.html#contact">Nagala xiriir</a></li>
+                        <li><a href="#">Su'aalaha badan</a></li>
+                        <li><a href="#">Taageero</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Fadal. Dhammaan Xuquuqdu waa la ilaaliyay.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="dashboard-script.js"></script>
+</body>
+</html>
