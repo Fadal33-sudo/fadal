@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="so" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gal - Fadal Dukaanka Online-ka</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <h1><i class="fas fa-store"></i> Fadal</h1>
+                    <p>Dukaanka Online-ka</p>
+                </a>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Hore</a></li>
+                    <li><a href="index.html#products">Alaabada</a></li>
+                    <li><a href="index.html#about">Naga</a></li>
+                    <li><a href="index.html#contact">Xiriir</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <a href="register.html" class="register-link">
+                    <i class="fas fa-user-plus"></i> Iscaddi
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Section -->
+    <section class="login-section">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="login-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h2>Soo Gal</h2>
+                    <p>Ku soo biir dukaankeenna si aad u hesho adeegyo gaar ah</p>
+                </div>
+
+                <form class="login-form" id="loginForm">
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope"></i>
+                            Email-kaaga ama Username-kaaga
+                        </label>
+                        <input 
+                            type="text" 
+                            id="email" 
+                            name="email" 
+                            placeholder="Gali email-kaaga..."
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">
+                            <i class="fas fa-lock"></i>
+                            Fincaanka (Password)
+                        </label>
+                        <div class="password-input">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Gali fincaankaaga..."
+                                required
+                            >
+                            <button type="button" class="toggle-password" onclick="togglePassword()">
+                                <i class="fas fa-eye" id="toggleIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember" name="remember">
+                            <span class="checkmark"></span>
+                            I xasuuso 30 maalood
+                        </label>
+                        
+                        <a href="#" class="forgot-password" onclick="showForgotPassword()">
+                            Fincaankaaga ma ilowday?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="login-btn">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Soo Gal
+                    </button>
+
+                    <div class="divider">
+                        <span>Ama ku gal</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button type="button" class="social-btn google-btn" onclick="loginWithGoogle()">
+                            <i class="fab fa-google"></i>
+                            Google
+                        </button>
+                        
+                        <button type="button" class="social-btn facebook-btn" onclick="loginWithFacebook()">
+                            <i class="fab fa-facebook-f"></i>
+                            Facebook
+                        </button>
+                    </div>
+
+                    <div class="signup-link">
+                        <p>Akoon ma leedahid? 
+                            <a href="register.html">Iscaddi halkan</a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Demo Accounts Info -->
+            <div class="demo-info">
+                <h3><i class="fas fa-info-circle"></i> Demo Akoonno</h3>
+                <div class="demo-accounts">
+                    <div class="demo-account">
+                        <strong>Macaamiil:</strong>
+                        <p>Email: macaamiil@fadal.so</p>
+                        <p>Password: macaamiil123</p>
+                        <button onclick="fillDemoUser('macaamiil@fadal.so', 'macaamiil123')" class="demo-btn">
+                            Isticmaal
+                        </button>
+                    </div>
+                    
+                    <div class="demo-account">
+                        <strong>Maamule:</strong>
+                        <p>Email: admin@fadal.so</p>
+                        <p>Password: admin123</p>
+                        <button onclick="fillDemoUser('admin@fadal.so', 'admin123')" class="demo-btn">
+                            Isticmaal
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h3>Soo galitaankii waa guulaystay!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Ku soo dhawoow <span id="welcomeUser"></span>!</p>
+                <p>Waxaad hadda si buuxa ugu isticmaali kartaa dukaankeenna.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="redirectToHome()">
+                    <i class="fas fa-home"></i> Aad Bogga Hore
+                </button>
+                <button class="btn-secondary" onclick="closeModal()">
+                    Halkan Joog
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="modal" id="forgotModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-key"></i>
+                <h3>Fincaanka Cusub</h3>
+                <button class="close-btn" onclick="closeForgotModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Gali email-kaaga, waanu kuu dirayeyn link-ga cusub:</p>
+                <input type="email" id="forgotEmail" placeholder="Email-kaaga...">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="sendResetEmail()">
+                    <i class="fas fa-paper-plane"></i> Dir Email-ka
+                </button>
+                <button class="btn-secondary" onclick="closeForgotModal()">
+                    Dib u laabo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-store"></i> Fadal</h3>
+                    <p>Dukaanka online-ka ugu wanaagsan ee Soomaaliya.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Caawinta</h4>
+                    <ul>
+                        <li><a href="#" onclick="showForgotPassword()">Fincaanka dib u hel</a></li>
+                        <li><a href="index.html#contact">Nagala xiriir</a></li>
+                        <li><a href="#">Su'aalaha badan</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Xiriirka</h4>
+                    <ul>
+                        <li><a href="index.html">Bogga Hore</a></li>
+                        <li><a href="register.html">Iscaddi</a></li>
+                        <li><a href="index.html#about">Naga</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Fadal. Dhammaan Xuquuqdu waa la ilaaliyay.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="login-script.js"></script>
+</body>
+</html>

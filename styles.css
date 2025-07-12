@@ -97,6 +97,25 @@ body {
     cursor: pointer;
 }
 
+.login-link {
+    color: white;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+}
+
+.login-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+    color: #ffd700;
+    text-decoration: none;
+}
+
 .cart-icon {
     position: relative;
     cursor: pointer;
