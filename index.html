@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="so" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fadal - Dukaanka Online-ka</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <h1><i class="fas fa-store"></i> Fadal</h1>
+                <p>Dukaanka Online-ka</p>
+            </div>
+            
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home">Hore</a></li>
+                    <li><a href="#products">Alaabada</a></li>
+                    <li><a href="#categories">Noocyada</a></li>
+                    <li><a href="#about">Naga</a></li>
+                    <li><a href="#contact">Xiriir</a></li>
+                </ul>
+            </nav>
+            
+            <div class="nav-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Raadi alaab..." id="searchInput">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <div class="cart-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Soo dhawoow Fadal</h1>
+            <p>Dukaanka ugu wanaagsan ee online-ka - Alaabada ugu fiican oo qiimo jaban</p>
+            <button class="cta-button" onclick="scrollToProducts()">
+                <i class="fas fa-shopping-bag"></i> Bilow Iibsashada
+            </button>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section id="categories" class="categories">
+        <div class="container">
+            <h2>Noocyada Alaabada</h2>
+            <div class="category-grid">
+                <div class="category-card" data-category="electronics">
+                    <i class="fas fa-laptop"></i>
+                    <h3>Elektironikada</h3>
+                    <p>Kumbuyuutarro, telefonnada, iwm</p>
+                </div>
+                <div class="category-card" data-category="clothing">
+                    <i class="fas fa-tshirt"></i>
+                    <h3>Dharka</h3>
+                    <p>Dhar ragga iyo dumarka</p>
+                </div>
+                <div class="category-card" data-category="home">
+                    <i class="fas fa-home"></i>
+                    <h3>Alaabada Guriga</h3>
+                    <p>Alaab guriga loo isticmaalo</p>
+                </div>
+                <div class="category-card" data-category="sports">
+                    <i class="fas fa-football-ball"></i>
+                    <h3>Ciyaaraha</h3>
+                    <p>Alaabada ciyaaraha</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2>Alaabada La Iibinayo</h2>
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="all">Dhamaan</button>
+                <button class="filter-btn" data-filter="electronics">Elektironikada</button>
+                <button class="filter-btn" data-filter="clothing">Dharka</button>
+                <button class="filter-btn" data-filter="home">Guriga</button>
+                <button class="filter-btn" data-filter="sports">Ciyaaraha</button>
+            </div>
+            
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Naga Ogow</h2>
+                    <p>Fadal waa dukaanka online-ka ugu wanaagsan ee Soomaaliya. Waxaan bixinnaa alaabada ugu fiican oo qiimo jaban leh. Macaamiishayada ayaan u adeegnaa si heer sare ah.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <h4>Geynta Degdega ah</h4>
+                            <p>Waxaan geynayaan alaabada 24 saacadood gudahood</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Amniga Lacagta</h4>
+                            <p>Bixinta ammaan ah oo 100% xaqiiqsan</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-headset"></i>
+                            <h4>Taageero 24/7</h4>
+                            <p>Waxaan taageeraa macaamiishayada maalinta oo dhan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-store-alt"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Nagala Xiriir</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Ciwaanka</h4>
+                            <p>Muqdisho, Soomaaliya</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telefoonka</h4>
+                            <p>+252 61 234 5678</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email-ka</h4>
+                            <p>info@fadal.so</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <input type="text" placeholder="Magacaaga" required>
+                    <input type="email" placeholder="Email-kaaga" required>
+                    <textarea placeholder="Farriintaada" rows="5" required></textarea>
+                    <button type="submit"><i class="fas fa-paper-plane"></i> Dir Farriinta</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping Cart -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Shanta Iibsashada</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Shantaadu waa baar</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Wadarta: $<span id="cartTotal">0.00</span></strong>
+            </div>
+            <button class="checkout-btn" disabled>
+                <i class="fas fa-credit-card"></i> Bixinta
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-store"></i> Fadal</h3>
+                    <p>Dukaanka online-ka ugu wanaagsan ee Soomaaliya. Waxaan bixinnaa alaabada ugu fiican.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Xiriirka</h4>
+                    <ul>
+                        <li><a href="#home">Hore</a></li>
+                        <li><a href="#products">Alaabada</a></li>
+                        <li><a href="#about">Naga</a></li>
+                        <li><a href="#contact">Xiriir</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Caawinta</h4>
+                    <ul>
+                        <li><a href="#">Su'aalaha Badan</a></li>
+                        <li><a href="#">Siyaasadda Celinta</a></li>
+                        <li><a href="#">Qaybta Geynta</a></li>
+                        <li><a href="#">Taageero</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Wararka</h4>
+                    <p>Iska qor email-kaaga si aad u hesho wararka cusub</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Email-kaaga">
+                        <button><i class="fas fa-envelope"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Fadal. Dhammaan Xuquuqdu waa la ilaaliyay.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
