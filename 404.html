@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="so" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bog la waayo - 404 | Fadal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .error-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+        }
+        
+        .error-container {
+            text-align: center;
+            color: white;
+            max-width: 600px;
+        }
+        
+        .error-number {
+            font-size: 8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s infinite;
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .error-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .error-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .error-btn:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .error-btn.primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .error-btn.primary:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+        
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            opacity: 0.7;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .suggestions {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 3rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .suggestions h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .suggestions ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .suggestions li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .suggestions li:last-child {
+            border-bottom: none;
+        }
+        
+        .suggestions a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .suggestions a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+        
+        @media (max-width: 768px) {
+            .error-number {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 2rem;
+            }
+            
+            .error-message {
+                font-size: 1.1rem;
+            }
+            
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .error-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="error-section">
+        <div class="error-container">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            
+            <div class="error-number">404</div>
+            
+            <h1 class="error-title">Boggan lama helin!</h1>
+            
+            <p class="error-message">
+                Waan ka xunahay, bogga aad raadinayso ma jiro ama waa la beddelay. 
+                Waxaa laga yaabaa in linkiga uu qaldanaa ama boggu uu meel kale u wareegay.
+            </p>
+            
+            <div class="error-actions">
+                <a href="index.html" class="error-btn primary">
+                    <i class="fas fa-home"></i>
+                    Ku noqo Hore
+                </a>
+                
+                <a href="javascript:history.back()" class="error-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    Dib u noqo
+                </a>
+                
+                <a href="index.html#contact" class="error-btn">
+                    <i class="fas fa-envelope"></i>
+                    Nagala xiriir
+                </a>
+            </div>
+            
+            <div class="suggestions">
+                <h3>Waxaad samay kartaa:</h3>
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            <i class="fas fa-home"></i>
+                            Booqo bogga hore
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#products">
+                            <i class="fas fa-shopping-bag"></i>
+                            Eeg alaabadayada
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Soo gal akoonkaaga
+                        </a>
+                    </li>
+                    <li>
+                        <a href="register.html">
+                            <i class="fas fa-user-plus"></i>
+                            Samayso akoon cusub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="index.html#about">
+                            <i class="fas fa-info-circle"></i>
+                            Wax naga baro
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Auto redirect after 30 seconds
+        setTimeout(function() {
+            if (confirm('Waxaad doonaysaa inaad ku noqoto bogga hore?')) {
+                window.location.href = 'index.html';
+            }
+        }, 30000);
+        
+        // Add some interactivity
+        document.querySelector('.error-number').addEventListener('click', function() {
+            this.style.animation = 'bounce 0.5s ease';
+            setTimeout(() => {
+                this.style.animation = 'bounce 2s infinite';
+            }, 500);
+        });
+        
+        // Track 404 errors (in real app, would send to analytics)
+        console.log('404 Error:', {
+            url: window.location.href,
+            referrer: document.referrer,
+            timestamp: new Date().toISOString()
+        });
+    </script>
+</body>
+</html>
